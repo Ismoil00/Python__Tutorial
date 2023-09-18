@@ -27,9 +27,13 @@ title = "menu".upper()
 # print("Ismoil".endswith("s"))
 
 # FORMATTED STRING: - it is something similar to backticks in JavaScript;
-full_name = f"{name} [{surname}] is a coder"
+text1 = "%s has %s best friends" % ("Ismoil", "over 10")
+# print(text1)
+text2 = "{} has {} best friends".format("Ismoil", "over 10")
+# print(text2)
+text3 = f"{name} {surname} is a programmer and he is {12.5 * 2:.2f}"
+# print(text3)
 
-# print(full_name)
 # -----------------------------------------------------------------
 course = "Python Course for Beginners"
 exists = "for" in course
@@ -229,15 +233,49 @@ set4.symmetric_difference_update(set5) # keeps everything except the duplicates;
 # -----------------------------------------------------------------
 
 ### Functions
-### !!! in Python we first define a function and then call it, the otherway gets you an error!!!
-### !!! in Python By Default Functions return None Type, when in JS "undefined is returned" !!!
-def sum(a, b):
-    return a + b
+## !!! in Python we first define a function and then call it, the otherway gets you an error!!!
+## !!! in Python By Default Functions return None Type, when in JS "undefined is returned" !!!
+def sum(a, b, c = 10):
+    return a + b + c
 
-
-sum(
+summed = sum(
     b=5, a=5
 )  # this is called "Keyword Argument" which does not care about parameter positioning, but it has to come after postional argument;
+
+## when we don't know how many parameters a function except:
+def multi_param(*args): # it converts everything to tuple:
+    print(args)
+    print(type(args))
+
+# multi_param(["dushanbe", "dubai", "moskow"])
+
+def multi_names_param(**kwargs): # it converts everything to dictionary:
+    print(kwargs)
+    print(type(kwargs))
+
+# multi_names_param(list_of_friends = ["dushanbe", "dubai", "moskow"])
+
+## recursive function:
+def recursive_function(num):
+    if (num >= 10): return
+    print(num)
+    recursive_function(num + 1)
+
+# recursive_function(0)
+
+## "nonlocal" keyword:
+def parent_func():
+    name = "ismoil"
+
+    def child_func():
+        nonlocal name # it allows you to give new value to parent variables:
+        name = "sorbon"
+        print("from child: ", name)
+
+    child_func()
+    print("from parent: ", name)
+
+# parent_func()
 
 # -----------------------------------------------------------------
 
