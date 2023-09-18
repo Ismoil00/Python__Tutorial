@@ -55,22 +55,23 @@ b = 50 // 3  # this one rounds float to integer;
 # -----------------------------------------------------------------
 
 ### LOOPS:
-### While Loop:
 # guesses = 0
 # secret_num = 5
 
+## While Loop:
 # while guesses < 3:
 #   guess = int(input("Guess Number! "))
 #   guesses += 1
 #   if guess == secret_num:
 #     print("You WON!!!")
 #     break
-# else: # "While Loops" can have else condition in Python
+# else: # we can use "else condition", but if the loop breaks then the condition doesn't work;
 #   print("Sorry, You FAILED")
 
-### For Loop:
+## For Loop:
 # for i in range(2, 22, 2):
 #   print(i)
+# else: print("the end of the loop")
 
 
 # -----------------------------------------------------------------
@@ -155,12 +156,77 @@ user = {
     "married": True,
 }
 
+# another way of creating dictionaries:
+user2 = dict(name = "ismoil", age = 25, married = True)
+
 key = user.get(
     "status", "married"
 )  # this method returns "none" if the key does not exists, but we can give it a value right away in this get() method;
 
+# print(type(user))
+# print(len(user2)) # we can use len() method on dictionaries in Python;
+# print(user.keys())
+# print(user.values())
+# print(user.items()) # getting keys/values as tuples;
+
+has_key = "married" in user
+# print(has_key)
+
+user.update({"status": "married"}) # with this method we can create a new key/value pair or update an existing one;
+# print(user)
+
+## Copying:
+# Bad Copy!!!
+user3 = user2 # it creates new reference to same dictionary in the memory;
+# Good Cpoy!!!
+user4 = user2.copy()
+user5 = dict(user2)
+
+## Deletion:
+removed1 = user.pop("status") # this one removes a key/value pair and returns the removed value as string;
+# print(removed1, user)
+
+removed2 = user.popitem() # this one removes a key/value pair and return the tuple of the removed key/value pair;
+# print(removed2, user)
+
+del user2["age"] # this way delete a key/value pair;
+# print(user2)
+
+del user2 # this way we delete a dictionary from our program entirely;
+# print(user2) # we get error since user2 does not exist anymore after it has been deleted;
+
+user.clear() # this one deletes all the keys/value pairs and returns an empty curly brackets;
+# print(user)
+
 # -----------------------------------------------------------------
 
+### SETS:
+set1 = {1, 2, 3, 4, 5, 6, 7, 8}
+set2 = set(("ismoil", "umed", "sorbon"))
+
+## No Duplicates are allowed in SETS - it just ignores them not throwing any errors:
+set3 = {1, 2, 3, 3, 5, 5, 6}
+# print(set3)
+
+set_exists = 2 in set3 # checking 
+# print(set_exists)
+
+## You can not refer to an element in SETS by index of key:
+
+## Adding a new element a set:
+set1.add(9)
+set1.update({10, 11, 12})
+# print(set1)
+unitied = set1.union(set2)
+# print(unitied)
+set4 = {5, 6, 8}
+set5 = {9, 6, 4}
+set4.intersection_update(set5) # keeps only the duplicates
+# print(set4)
+set4.symmetric_difference_update(set5) # keeps everything except the duplicates;
+# print(set4)
+
+# -----------------------------------------------------------------
 
 ### Functions
 ### !!! in Python we first define a function and then call it, the otherway gets you an error!!!
@@ -187,7 +253,6 @@ sum(
 #   print("Please, type other numbers except zero - 0")
 
 # -----------------------------------------------------------------
-
 
 ### Classes:
 # creating class:
