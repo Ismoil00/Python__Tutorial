@@ -255,6 +255,8 @@ def multi_names_param(**kwargs): # it converts everything to dictionary:
 
 # multi_names_param(list_of_friends = ["dushanbe", "dubai", "moskow"])
 
+##################################
+
 ## recursive function:
 def recursive_function(num):
     if (num >= 10): return
@@ -262,6 +264,8 @@ def recursive_function(num):
     recursive_function(num + 1)
 
 # recursive_function(0)
+
+##################################
 
 ## "nonlocal" keyword:
 def parent_func():
@@ -277,18 +281,65 @@ def parent_func():
 
 # parent_func()
 
+##################################
+
+## Lambda functions | Anonymous functions:
+square = lambda a, b: a * b
+# print(square(3, 4))
+
+# helpful usage of lambda functions:
+def sum(x):
+    return lambda y: print(x + y)
+
+sum_ten = sum(10)
+sum_twenty = sum(20)
+# sum_ten(5)
+# sum_twenty(5)
+
+##################################
+
+## Higher Order Functions:
+list_of_numbers = [1, 2, 3, 4, 5, 6, 7, 8]
+
+# mapping through list:
+new_list_of_numbers = list(map(lambda x: x**x, list_of_numbers))
+# print(new_list_of_numbers)
+
+# filtering list:
+list_of_even_nums = list(filter(lambda a: a % 2 == 0, list_of_numbers))
+# print(list_of_even_nums)
+
+# reduce function:
+from functools import reduce
+cities_names = ["Dushanbe", "Dubai", "New York", "Riyad", "Mekkah", "Medinah"]
+total = reduce(lambda acc, cur: acc + len(cur), cities_names, 0)
+# print(total)
+
 # -----------------------------------------------------------------
 
 ### ERROR HANDLING = Try & Exceptions - something like "try and catch" in JS:
-# try:
-#   age = input("How old are you? ")
-#   birth_year = 2023 - int(age)
-#   div_zero = 2023 / int(age)
-#   print("You were born in", birth_year)
-# except ValueError:
-#   print("Please, enter numbers only")
-# except ZeroDivisionError:
-#   print("Please, type other numbers except zero - 0")
+try:
+  age = input("How old are you? ")
+  
+  if age == "":
+    raise TypeError("You did not enter anything!\nPlease enter something!") # raising custom error:
+
+  birth_year = 2023 - int(age)
+  div_zero = 2023 / int(age)
+  print("You were born in", birth_year)
+  
+except NameError:
+    print("Something probably is undefined")
+except ValueError:
+  print("Please, enter numbers only")
+except ZeroDivisionError:
+  print("Please, type other numbers except zero - 0")
+except Exception as error:
+    print(error)
+else: # this block runs after try if there are not any errors!!!
+    print("No Error!!!")
+finally: # this block runs no matter what happens!!!
+    print("The end of try and error exception block code")
 
 # -----------------------------------------------------------------
 
@@ -321,6 +372,14 @@ class Line(Point):
 # creating an instance of an inherited class:
 line = Line(12, 13)
 # print(line.x)
+
+class Point3D(Point):
+    def __init__(self, x, y, z):
+        super().__init__(x, y)
+        self.z = z
+    
+    def get_coordinates(self):
+        return tuple(self.x, self.y, self.z)
 
 # -----------------------------------------------------------------
 
