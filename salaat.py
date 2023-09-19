@@ -12,19 +12,36 @@ class MissedPrayers:
     def show_me_missed_prayers(self):
         print(f"\nHere are your missed prayers:\n- Fajr {self.fajr};\n- Zuhr {self.zuhr};\n- Asr {self.asr};\n- Maghrib {self.maghrib};\n- Ishaa {self.ishaa};")
     
-    def I_prayed(self, prayer, rakaat):
+    def I_prayed(self, prayer, times):
         try:
             if (prayer == "fajr"):
-                self.fajr -= rakaat
+                self.fajr -= times
             elif (prayer == "zuhr"):
-                self.zuhr -= rakaat
+                self.zuhr -= times
             elif (prayer == "asr"):
-                self.asr -= rakaat
+                self.asr -= times
             elif (prayer == "maghrib"):
-                self.maghrib -= rakaat
+                self.maghrib -= times
             elif (prayer == "ishaa"):
-                self.ishaa -= rakaat
-            print(f"\nYou prayed {prayer} for {rakaat} rakaats and here is the list of still left missed prayers:")
+                self.ishaa -= times
+            print(f"\nYou prayed {prayer} for {times*2} rakaats 😊 and here is the list of still left missed prayers:")
+            self.show_me_missed_prayers()
+        except TypeError:
+            print("Please make sure you are passing the right formats of parameters")
+    
+    def I_missed_again(self, prayer, times):
+        try:
+            if (prayer == "fajr"):
+                self.fajr += times
+            elif (prayer == "zuhr"):
+                self.zuhr += times
+            elif (prayer == "asr"):
+                self.asr += times
+            elif (prayer == "maghrib"):
+                self.maghrib += times
+            elif (prayer == "ishaa"):
+                self.ishaa += times
+            print(f"\nYou missed again {prayer} for {times*2} rakaats 😒 and here is the list of missed prayers:")
             self.show_me_missed_prayers()
         except TypeError:
             print("Please make sure you are passing the right formats of parameters")
@@ -32,3 +49,4 @@ class MissedPrayers:
 Ismoil = MissedPrayers({"fajr": 3, "zuhr": 1, "asr": 2, "maghrib": 0, "ishaa": 0})
 Ismoil.show_me_missed_prayers()
 Ismoil.I_prayed("fajr", 2)
+Ismoil.I_missed_again("fajr", 5)

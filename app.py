@@ -2,6 +2,8 @@ import math, random  # we have to import "math module" if we want math methods;
 from utils import find_max, kg_to_lbs  # methods of importing modules;
 from pathlib import Path
 import sys
+import os
+from pprint import pprint
 
 # print("max number", find_max([1, 20, 5]))
 # print("kilogram to pounds", kg_to_lbs(20))
