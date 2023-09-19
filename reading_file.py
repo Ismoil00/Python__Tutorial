@@ -56,3 +56,10 @@ if not os.path.exists("countries.txt"):
     f4.close()
 else:
     os.remove("countries.txt")
+
+# copying values from one file to another:
+with open("cities_names.txt", "r") as f:
+    content = f.read()
+
+with open("cities.txt", "w") as f:
+    f.write(content)
